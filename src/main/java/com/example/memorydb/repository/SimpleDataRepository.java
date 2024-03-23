@@ -14,7 +14,7 @@ abstract public class SimpleDataRepository<T extends Entity, ID extends Long> im
         public int compare(T o1, T o2) {
             return Long.compare(o1.getId(), o2.getId());
         }
-    }
+    };
 
     @Override
     public T save(T data) {
@@ -28,7 +28,7 @@ abstract public class SimpleDataRepository<T extends Entity, ID extends Long> im
                         }).findFirst();
 
         if(prevData.isPresent()){
-            dataList.remove(prevData);
+            dataList.remove(prevData.get());
             dataList.add(data);
         } else {
             index++;
