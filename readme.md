@@ -8,7 +8,18 @@ repository : db. 데이터 저장소
 
 @Service : 여기는 서비스가 들어가는 빈의 영역이다. db의 영역임을 나타냄
 
-@RequiredArgsConstructor : 생성자 메소드로 채워줘
+@RequiredArgsConstructor : 생성자 메소드로 채워줘. 이거 안하면 아래처럼 써야함
+```java
+@Service
+public class BookService {
+    public final BookRepository bookRepository;
+    
+    public BookService(BookRepository bookRepository){ // bean 영역에서 찾아서 넣어줌
+        this.bookRepository = bookRepository;
+    }
+}
+
+```
 
 @Configuration : 여기는 설정하는 곳이야. 앱이 실행될 때 configuration을 찾아 bean context에 객체로 만들어 둠. @Service를 못하는 곳에서 사용할 수 있음
 
