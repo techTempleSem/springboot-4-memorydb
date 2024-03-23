@@ -52,7 +52,7 @@ abstract public class SimpleDataRepository<T extends Entity, ID extends Long> im
         }).findFirst();
 
         if(deleteEntity.isPresent()){
-            dataList.remove(deleteEntity);
+            dataList.remove(deleteEntity.get());
         }
     }
 
